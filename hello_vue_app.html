@@ -1,0 +1,48 @@
+<!-- Oscar Chiqui | The Hello Vue app that displays a message.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello Vue!</h1>
+        <p> {{ message }} </p>
+
+        <button v-on:click="addExclamation">Add !</button>
+        <button v-on:click="clear">CLEAR</button>
+    </div>
+<!-- Uses an uppercase filter, adds exclamation points, and resets the message -->
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Welcome!',
+                numOfEx: 1
+            },
+            methods: {
+                addExclamation: function (){
+                    if(this.numOfEx < 10){
+                        this.message = this.message + '!'
+                        this.numOfEx++
+                    } else {
+                        alert('No more exclamation points')
+                    }
+                },
+                clear: function (){
+                    this.message = 'Welcome!'
+                    this.numOfEx =1
+                }
+            },
+            filters: {
+                uppercase: function (string){
+                    return string.toUpperCase()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

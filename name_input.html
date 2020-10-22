@@ -1,0 +1,42 @@
+<!-- Oscar Chiqui | The enter-your-name form.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Name</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<!-- The one with the v-if directive that only displays a message if a name is entered-->
+<body>
+    <div id="app">
+        <h1>Hello Vue!</h1>
+
+        <label for="name">Please enter your name:</label>
+        <input v-model="name" id="name">
+
+        <div v-if="name">
+            <p>Your name is {{ name }}</p>
+            <button v-on:click="clear">CLEAR</button>
+        </div>
+
+        <div v-else>
+            <p>waiting for data to be entered...</p>
+        </div>
+
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: ""
+            },
+            methods: {
+                clear: function (){
+                    this.name = ''
+                }
+            }
+        })
+    </script>
+</body>
+</html>
